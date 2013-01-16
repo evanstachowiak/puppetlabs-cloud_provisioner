@@ -842,6 +842,7 @@ module Puppet::CloudPack
       # Determine the certificate name as reported by the remote system.
       certname_command = "#{cmd_prefix}puppet agent --configprint certname"
       results = ssh_remote_execute(server, options[:login], certname_command, options[:keyfile])
+      sleep 20
 
       if results[:exit_code] == 0 then
         puppetagent_certname = results[:stdout].strip
